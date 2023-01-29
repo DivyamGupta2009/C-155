@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src = "https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+    <script src="./components/Rotation.js"></script>
+    <script src = "./components/Fish.js"></script>
+    <script src = "./components/Treasure.js"></script>
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity look-controls camera = "active: true" position="0 10 25"></a-entity>
+
+      <!--Asset Management-->
+      <a-a-assets>        
+        <a-asset-item id = "fish" src = "assets/fish/scene.gltf"></a-asset-item>
+        <a-asset-item id = "island" src = "assets/island/scene.gltf"></a-asset-item>
+        <a-asset-item id = "scuba_diver" src = "assets/scuba_driver/scene.gltf"></a-asset-item>
+        <a-asset-item id = "treasure" src = "assets/treasure/model.gltf"></a-asset-item>
+        <a-asset-item id = "turtle" src = "assets/turtle/scene.gltf"></a-asset-item>
+      </a-a-assets>
+
+      <a-sky gemoetry = "primitive: sphere" material = "shader: gradient; bottomColor: #00009e; topColor: 109 205 227; offset: 0.0001" 
+      radius = "100" theta-length = "180" side = "double" animation = "property: rotation; to: 0 300 0; easing: linear; 
+      loop: true; dur: 500000">
+      
+    <a-entity gltf-model="#island" scale="1 1 1" position="0 -15 -40"></a-entity>
+    <a-entity gltf-model="#treasure" scale="15 15 15" position="0 -30 -40" rotation="0 90 0"></a-entity>
+    <a-entity gltf-model="#treasure" scale="15 15 15" position="10 -30 -40" rotation="0 90 0"></a-entity>
+    <a-entity gltf-model="#treasure" scale="15 15 15" position="-15 -30 -40" rotation="0 90 0"></a-entity>
+    <a-entity gltf-model="#fish" scale="0.1 0.1 0.1" position="-10 5 -3" rotation="0 45 0"></a-entity>
+    <a-entity gltf-model="#fish" scale="0.1 0.1 0.1" position="10 0 -3" rotation="0 180 0"></a-entity>
+    <a-entity gltf-model="#turtle" scale="0.005 0.005 0.005" position="0 -30 0" rotation="0 90 0"></a-entity>
+    </a-sky>
+
+    <a-entity gltf-model="#scuba_diver" scale="0.1 0.1 0.1" position="5 0 15" rotation="0 90 -20"
+    body = "type: dynamic; mass: 0; shape: none;" 
+    shape="shape: cylinder; height: 100; radiusTop: 20; radiusBottom: 20; offset: 50 100 -50"
+    diver-rotation-reader>
+  </a-entity>
+
+     <a-entity position="0 0 0" id = "fishModels" fish> </a-entity>
+    <a-entity position="0 0 0" id = "treasureCoins" coins> </a-entity>
+    <a-cylinder color = "#00009e" radius = "100" opacity = "0.2"></a-cylinder>
+
+    </a-scene>
+  </body>
+</html>
